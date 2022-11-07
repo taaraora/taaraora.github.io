@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ball-ex</title>
+</head>
+<body>
+<div>Дано</div>
+<div class="dest" id="dest">Dц: </div>
+<div class="wSpeed">Sвіт: </div>
+<div>Ks:?</div>
+<div class="deriv">Дер: </div>
+<div>---поправки на випередження---</div>
+<div class="tSpeed">Vціл: </div>
+<div class="tAngle">Кут цілі: </div>
+<div class="bulletTime">Час підльоту: </div>
+<script>function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function  getRunAngle(status){
+    let angle = 0
+    if (status == 1){
+        angle = 45
+    }else if (status == 2) {
+        angle = 90
+    }
+    return angle
+}
+function getRunDir(status){
+    let angle = ""
+    if (status == 1){
+        angle = "справа"
+    }else if (status == 2) {
+        angle = "слева"
+    }
+    return angle
+}
+
+function mOrKm(status){
+    let res = ""
+    if (status == 1){
+        res = "м/с"
+    }else if (status == 2) {
+        res = "км/г"
+    }
+    return res
+}
+
+function milOrMoa(status){
+    let res = ""
+    if (status == 1){
+        res = "mil"
+    }else if (status == 2) {
+        res = "moa"
+    }
+    return res
+}
+
+function ballEx() {
+    document.querySelector(".dest").innerHTML += ((getRandomInt(1,3)+Math.random()).toFixed(1) + mOrKm(getRandomInt(1,2))+ " x " + getRandomInt(1,6) + milOrMoa(getRandomInt(1,2)))
+    document.querySelector(".wSpeed").innerHTML += getRandomInt(1,30) + mOrKm(getRandomInt(1,2)) + " x " + getRandomInt(1,12)+"ч"
+    document.querySelector(".deriv").innerHTML += getRandomInt(20,70) + "см"
+    document.querySelector(".tSpeed").innerHTML += ((getRandomInt(3,20)+Math.random()).toFixed(1)) + "км/г"
+    document.querySelector(".tAngle").innerHTML += getRunAngle(getRandomInt(1,2)) + " x " + getRunDir(getRandomInt(1,2))
+    document.querySelector(".bulletTime").innerHTML += Math.random().toFixed(2)+"с"
+
+}
+ballEx()
+</script>
+</body>
+</html>
